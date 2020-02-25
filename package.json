@@ -22,5 +22,9 @@
     "father": "^2.16.0",
     "typescript": "^3.3.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^3.26.12",
+    "babel-plugin-import": "^1.13.0"
+  }
 }

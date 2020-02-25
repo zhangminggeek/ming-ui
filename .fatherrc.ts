@@ -8,11 +8,11 @@ const options = {
   },
   // 额外的 babel 插件
   extraBabelPlugins: [
-      /* ['babel-plugin-import', {
+      ['babel-plugin-import', {
           libraryName: 'antd',
           libraryDirectory: 'es',
           style: true,
-      }] */
+      }]
   ],
   cssModules: true,
   extractCSS: true, // 是否将 css 抽离成单独的 css 文件
