@@ -19,6 +19,7 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.9",
     "father": "^2.16.0",
     "typescript": "^3.3.3"
   },
