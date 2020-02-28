@@ -26,7 +26,12 @@
   "license": "MIT",
   "dependencies": {
     "antd": "^3.26.12",
-    "babel-plugin-import": "^1.13.0",
     "classnames": "^2.2.6"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ]
 }
