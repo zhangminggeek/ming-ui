@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import Preview from './preview';
+import { StepBackwardOutlined } from '@ant-design/icons';
 import './style/index.less';
 
 type FitType = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';

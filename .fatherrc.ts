@@ -6,6 +6,16 @@ const options = {
     themeConfig: { mode: 'light' }, // 主题色
     base: '/ming-ui', // 根路由
   },
+  extraBabelPlugins: [
+    [
+      'babel-plugin-import',
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: true,
+      },
+    ],
+  ],
   cssModules: false,
   extractCSS: true, // 是否将 css 抽离成单独的 css 文件
   lessInBabelMode: true, // 在 babel 模式下做 less 编译，基于 gulp-less，默认不开启
