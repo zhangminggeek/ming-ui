@@ -5,16 +5,65 @@ order: 1
 sidebar: true
 ---
 
+import { Playground } from 'docz';
 import Image from './';
+import "./style/doc.less";
 
-# Image Component
+# Image 组件
 
-## Normal Image
+## 基础用法
 
-<div>
-  <Image 
-    src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-    fit="contain"
-    alt="test"
-  />
-</div>
+<Playground>
+  {() => {
+    const fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+    const src = "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+
+    return (
+      <div className="demo-basic">
+        {fits.map((item, index) => (
+          <div key={index} className="block">
+            <p>{item}</p>
+            <Image src={src} fit={item} /> 
+          </div>
+        ))}
+      </div>
+    )
+  }}
+</Playground>
+
+## 占位内容
+
+<Playground>
+  {() => {
+    const src = "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+
+    return (
+      <div className="demo-placeholder">
+        <div className="block">
+          <p>默认</p>
+          <Image src={src} /> 
+        </div>
+        <div className="block">
+          <p>自定义</p>
+          <Image src={src} placeholder={<span>loading...</span>} /> 
+        </div>
+      </div>
+    )
+  }}
+</Playground>
+
+
+## 加载失败
+
+<Playground>
+  <div className="demo-error">
+    <div className="block">
+      <p>默认</p>
+      <Image /> 
+    </div>
+    <div className="block">
+      <p>自定义</p>
+      <Image error={<span>error</span>} /> 
+    </div>
+  </div>
+</Playground>
