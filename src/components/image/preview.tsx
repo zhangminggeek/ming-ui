@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { ConfigContext, ConfigConsumerProps } from '../config-provider';
 import {
