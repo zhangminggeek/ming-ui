@@ -1,8 +1,6 @@
 import React from 'react';
-import classNames from 'classnames';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import Preview from './preview';
-import { StepBackwardOutlined } from '@ant-design/icons';
 import './style/index.less';
 
 type FitType = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
@@ -22,6 +20,7 @@ interface ImageState {
   loading: boolean;
   imageWidth: number;
   imageHeight: number;
+  isPreview: boolean;
 }
 
 class Img extends React.Component<ImageProps, ImageState> {
@@ -33,6 +32,7 @@ class Img extends React.Component<ImageProps, ImageState> {
       loading: true,
       imageWidth: 0,
       imageHeight: 0,
+      isPreview: false,
     };
   }
 
@@ -51,6 +51,7 @@ class Img extends React.Component<ImageProps, ImageState> {
     });
   };
 
+  // check validity of image url before showing
   loadImage = () => {
     const img: HTMLImageElement = new Image();
     img.onload = (e: Event) => this.handleLoad(e, img);
@@ -58,9 +59,26 @@ class Img extends React.Component<ImageProps, ImageState> {
     img.src = this.props.src;
   };
 
+  changePreviewState = (state: boolean) => {
+    // lock screen when previewing
+    document.documentElement.style.overflow = state ? 'hidden' : 'auto';
+    this.setState({ isPreview: state });
+  };
+
+  handlePreview = () => this.changePreviewState(true);
+
   renderImage = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const { src, alt, fit = 'fill', preview = false, placeholder, error, ...rest } = this.props;
-    const { loading, isError } = this.state;
+    const {
+      src,
+      alt,
+      fit = 'fill',
+      preview = false,
+      zIndex = 2000,
+      placeholder = '加载中...',
+      error = '加载失败',
+      ...rest
+    } = this.props;
+    const { loading, isError, isPreview } = this.state;
 
     const canPreview: boolean = preview === true;
 
@@ -71,23 +89,39 @@ class Img extends React.Component<ImageProps, ImageState> {
 
     return (
       <div className={getPrefixCls('image')} {...rest}>
-        {loading && (
-          <div className={getPrefixCls('image-placeholder')}>{placeholder || '加载中...'}</div>
-        )}
+        {loading && <div className={getPrefixCls('image-placeholder')}>{placeholder}</div>}
 
-        {isError && <div className={getPrefixCls('image-error')}>{error || '加载失败'}</div>}
+        {isError && <div className={getPrefixCls('image-error')}>{error}</div>}
 
         {!loading && !isError && (
-          <img src={src} className={getPrefixCls('image-inner')} style={imageStyle} alt={alt} />
+          <img
+            src={src}
+            className={getPrefixCls('image-inner')}
+            style={imageStyle}
+            alt={alt}
+            onClick={this.handlePreview}
+          />
         )}
 
-        {canPreview && <Preview src={src} />}
+        {canPreview && (
+          <Preview
+            src={src}
+            show={isPreview}
+            zIndex={zIndex}
+            changePreviewState={this.changePreviewState}
+          />
+        )}
       </div>
     );
   };
 
   componentDidMount() {
     this.loadImage();
+  }
+
+  componentWillUnmount() {
+    // remove document style before unmounting
+    document.documentElement.style.overflow = '';
   }
 
   render() {
