@@ -1,14 +1,19 @@
 {
   "name": "ming-ui",
   "version": "0.0.1",
-  "description": "",
+  "description": "基于 react 的组件库",
+  "keywords": ["react", "ming-ui", "ming", "ui"],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "authors": {
     "name": "zhangming",
     "email": "qianzm2490@vip.qq.com"
   },
-  "repository": "/ming-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangminggeek/ming-ui.git"
+  },
+  "homepage": "https://github.com/zhangminggeek/ming-ui",
   "scripts": {
     "dev": "npx --max_old_space_size=8096 father doc dev --host 0.0.0.0",
     "build": "father build",
