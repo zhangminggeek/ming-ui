@@ -1,0 +1,26 @@
+---
+name: Radio
+route: /radio
+order: 2
+sidebar: true
+---
+
+import { Playground } from 'docz';
+import Radio from './';
+import "./style/doc.less";
+
+# Radio 组件
+
+## 基础用法
+
+<Playground>
+  <Radio>Radio 1</Radio>
+  <Radio>Radio 2</Radio>
+</Playground>
+
+## 禁用
+
+<Playground>
+  <Radio disabled>Radio 1</Radio>
+  <Radio disabled defaultChecked>Radio 2</Radio>
+</Playground>
