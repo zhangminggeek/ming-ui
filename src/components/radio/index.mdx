@@ -6,6 +6,7 @@ sidebar: true
 ---
 
 import { Playground } from 'docz';
+import { useState } from 'react';
 import Radio from './';
 import "./style/doc.less";
 
@@ -15,7 +16,7 @@ import "./style/doc.less";
 
 <Playground>
   <Radio>Radio 1</Radio>
-  <Radio>Radio 2</Radio>
+  <Radio defaultChecked>Radio 2</Radio>
 </Playground>
 
 ## 禁用
@@ -23,4 +24,25 @@ import "./style/doc.less";
 <Playground>
   <Radio disabled>Radio 1</Radio>
   <Radio disabled defaultChecked>Radio 2</Radio>
+</Playground>
+
+## 单选组
+
+<Playground>
+  {
+    () => {
+      const [val, setVal] = useState(3);
+
+      const handleChange = e => {
+        setVal(e.target.value);
+      };
+
+      return (
+        <Radio.Group value={val} onChange={(e) => {handleChange(e)}}>
+          <Radio value={3}>Radio 3</Radio>
+          <Radio value={4}>Radio 4</Radio>
+        </Radio.Group>
+      )
+    }
+  }
 </Playground>
