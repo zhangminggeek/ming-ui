@@ -1,0 +1,68 @@
+---
+name: Radio
+route: /radio
+order: 2
+sidebar: true
+---
+
+import { Playground } from 'docz';
+import { useState } from 'react';
+import Radio from './';
+
+# Radio 组件
+
+## 基础用法
+
+<Playground>
+  <Radio>Radio 1</Radio>
+  <Radio defaultChecked>Radio 2</Radio>
+</Playground>
+
+## 禁用
+
+<Playground>
+  <Radio disabled>Radio 1</Radio>
+  <Radio disabled defaultChecked>Radio 2</Radio>
+</Playground>
+
+## 单选组
+
+<Playground>
+  {
+    () => {
+      const [val, setVal] = useState(1);
+
+      const handleChange = e => {
+        setVal(e.target.value);
+      };
+
+      return (
+        <Radio.Group value={val} onChange={(e) => {handleChange(e)}}>
+          <Radio value={1}>Radio 1</Radio>
+          <Radio value={2}>Radio 2</Radio>
+        </Radio.Group>
+      )
+    }
+  }
+</Playground>
+
+## API
+
+### Radio
+
+属性 | 说明 | 类型 | 默认值
+---|---|---|---
+checked | 是否选中 | boolean | false
+defaultChecked | 初始是否选中 | boolean | false
+disabled | 是否禁用 | boolean | false
+value | 根据 value 进行比较，判断是否选中 | any | -
+
+### RadioGroup
+
+属性 | 说明 | 类型 | 默认值
+---|---|---|---
+value | 当前选中的值 | any | -
+defaultValue | 默认选中的值 | any | -
+name | 原生 name 属性 | string | -
+disabled | 是否禁用 | boolean | false
+onChange | 选项变化时的回调函数 | Function(e:Event) | -
