@@ -1,9 +1,11 @@
 {
-  "vendors.css": "/ming-ui/static/css/vendors.6d44adfc5747290b95b8.css",
-  "vendors.js": "/ming-ui/static/js/vendors.50a1600d.js",
-  "app.js": "/ming-ui/static/js/app.6d44adfc5747290b95b8.js",
+  "vendors.css": "/ming-ui/static/css/vendors.9ab78e2f6774a7a057da.css",
+  "vendors.js": "/ming-ui/static/js/vendors.530d85e1.js",
+  "app.js": "/ming-ui/static/js/app.9ab78e2f6774a7a057da.js",
   "src-components-config-provider-index.js": "/ming-ui/static/js/src-components-config-provider-index.18b0a8be.js",
-  "src-components-image-index.css": "/ming-ui/static/css/src-components-image-index.6d44adfc5747290b95b8.css",
-  "src-components-image-index.js": "/ming-ui/static/js/src-components-image-index.660b791e.js",
+  "src-components-image-index.css": "/ming-ui/static/css/src-components-image-index.9ab78e2f6774a7a057da.css",
+  "src-components-image-index.js": "/ming-ui/static/js/src-components-image-index.d2502959.js",
+  "src-components-radio-index.css": "/ming-ui/static/css/src-components-radio-index.9ab78e2f6774a7a057da.css",
+  "src-components-radio-index.js": "/ming-ui/static/js/src-components-radio-index.6352deac.js",
   "index.html": "/ming-ui/index.html"
 }
