@@ -67,7 +67,10 @@ class Preview extends React.Component<PreviewProps, PreviewState> {
   };
 
   reset = () => {
-    this.setState({ transform: { scale: 1, deg: 0 } });
+    this.setState({
+      mode: Mode.CONTAIN,
+      transform: { scale: 1, deg: 0 },
+    });
   };
 
   handleActions = (type: string) => {
