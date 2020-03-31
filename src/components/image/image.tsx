@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import Preview from './preview';
 import './style/index.less';
@@ -6,6 +7,8 @@ import './style/index.less';
 type FitType = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
 
 interface ImageProps {
+  className?: string;
+  style?: React.CSSProperties;
   src: string;
   alt?: string;
   fit?: FitType;
@@ -61,14 +64,17 @@ class Img extends React.Component<ImageProps, ImageState> {
 
   changePreviewState = (state: boolean) => {
     // lock screen when previewing
-    document.documentElement.style.overflow = state ? 'hidden' : 'auto';
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = state ? 'hidden' : 'auto';
     this.setState({ isPreview: state });
   };
 
-  handlePreview = () => this.changePreviewState(true);
+  handlePreview = () => this.props.preview && this.changePreviewState(true);
 
   renderImage = ({ getPrefixCls }: ConfigConsumerProps) => {
     const {
+      className,
+      style,
       src,
       alt,
       fit = 'fill',
@@ -82,13 +88,15 @@ class Img extends React.Component<ImageProps, ImageState> {
 
     const canPreview: boolean = preview === true;
 
+    const imgClassNames = classNames(getPrefixCls('image'), className);
+
     const imageStyle: object = {
       objectFit: fit,
       cursor: canPreview ? 'pointer' : 'default',
     };
 
     return (
-      <div className={getPrefixCls('image')} {...rest}>
+      <div className={imgClassNames} style={style} {...rest}>
         {loading && <div className={getPrefixCls('image-placeholder')}>{placeholder}</div>}
 
         {isError && <div className={getPrefixCls('image-error')}>{error}</div>}
