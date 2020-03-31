@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { RadioGroupContextProvider } from './context';
-import { RadioChangeEvent } from './interface';
 import { ConfigConsumer } from '../config-provider';
 
 interface GroupProps {
+  className?: string;
+  style?: React.CSSProperties;
   name?: string;
   disabled?: boolean;
   value?: any;
   defaultValue?: any;
-  onChange?: (e: RadioChangeEvent) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
 }
 
@@ -56,7 +57,7 @@ export class Group extends Component<GroupProps, GroupState> {
     return null;
   }
 
-  handleChange = (e: RadioChangeEvent) => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { onChange } = this.props;
     if (!('value' in this.props)) {
       this.setState({
@@ -67,7 +68,13 @@ export class Group extends Component<GroupProps, GroupState> {
   };
 
   renderGroup = () => {
-    return <div>{this.props.children}</div>;
+    const { className, style, children } = this.props;
+
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
   };
 
   render() {

@@ -25,7 +25,7 @@ class Item extends React.Component<RadioProps, RadioState> {
     return null;
   }
 
-  handleChange = (e: RadioChangeEvent) => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { disabled } = this.props;
     if (disabled) return;
 
@@ -66,7 +66,7 @@ class Item extends React.Component<RadioProps, RadioState> {
             value={value}
             checked={checked}
             disabled={disabled}
-            onChange={this.handleChange}
+            onChange={e => this.handleChange(e)}
           />
           <span className={getPrefixCls('radio-inner')}></span>
         </span>

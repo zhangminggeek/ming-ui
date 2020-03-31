@@ -1,5 +1,5 @@
 export interface RadioGroupContextProps {
-  onChange?: (e: RadioChangeEvent) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: any;
   disabled?: boolean;
   name?: string;
@@ -14,6 +14,8 @@ export interface RadioChangeEvent {
 }
 
 export interface RadioProps {
+  className?: string;
+  style?: React.CSSProperties;
   name?: string;
   checked?: boolean;
   defaultChecked?: boolean;
